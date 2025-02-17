@@ -1,7 +1,6 @@
 import GuestLayout from '@/Layouts/GuestLayout';
 import PrimaryButton from '@/Components/PrimaryButton';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { FiMail } from 'react-icons/fi';
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
@@ -17,7 +16,7 @@ export default function VerifyEmail({ status }) {
 
             <div className="w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md text-center">
                 <div className="flex justify-center text-purple-500 text-4xl mb-4">
-                    <FiMail />
+                    
                 </div>
 
                 <h2 className="text-xl font-semibold text-gray-800 mb-2">

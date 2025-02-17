@@ -5,7 +5,6 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
-import { FiEye, FiEyeOff } from 'react-icons/fi';
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -66,13 +65,7 @@ export default function ResetPassword({ token, email }) {
                                 isFocused={true}
                                 onChange={(e) => setData('password', e.target.value)}
                             />
-                            <button
-                                type="button"
-                                className="absolute inset-y-0 right-3 flex items-center text-gray-600"
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
-                            </button>
+                          
                         </div>
                         <InputError message={errors.password} className="text-red-500 text-sm mt-2" />
                     </div>
