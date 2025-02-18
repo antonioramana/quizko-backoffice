@@ -161,18 +161,22 @@ export default function Index({ auth, questions, subjectData }) {
 
 
                 {/* Selected Questions Display (Improved) */}
-                <div className="mt-4 border rounded p-2 bg-white">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">Questions sélectionnées:</h3>
-                    <ul className="list-disc pl-5">
-                        {selectedQuestions.map((question,index) => (
-                            <li key={question.value} className="text-purple-500 mb-1 flex items-center justify-between">
-                                <span>{index+1+") "} {question.label}</span> {/* Display label */}
-                                <span>{question.point} pts</span> {/* Display points */}
-                            </li>
-                        ))}
-                    </ul>
-                    <div className="mt-2 font-medium">Total des points: {totalPoints}</div>
-                </div>
+                <div className="mt-4 border font-mono rounded p-2 bg-white max-h-80 overflow-y-auto"> 
+                                <h3 className="text-lg font-mono text-gray-900 mb-2">
+                                    Questions sélectionnées <span className="text-purple-950">({totalPoints} points)</span>:
+                                </h3>
+                                <ul className="list-disc pl-5">
+                                    {selectedQuestions.map((question, index) => (
+                                        <li key={question.value} className="text-purple-500 mb-1 flex items-center justify-between">
+                                            <span>{index + 1}) {question.label}</span>
+                                            <span>{questions.find(q => q.id === question.value)?.point} pts</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="flex items-center justify-center my-3 text-purple-950 border-white">
+                                    Total des points: {totalPoints}
+                                </div>
+                            </div>
             </div>
 
             <div className="flex items-center justify-end mt-4">
@@ -188,7 +192,7 @@ export default function Index({ auth, questions, subjectData }) {
                                     type="submit"
                                     disabled={processing}
                                 >
-                                    {subjectData ? "Modifier" : "Ajouter"} {/* Dynamic button text */}
+                                      {subjectData ? "Modifier les questions de ce sujet" : "Ajouter les questions à ce sujet"}
                                 </PrimaryButton>
                             </div>
                             </form>

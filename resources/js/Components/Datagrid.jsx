@@ -94,7 +94,7 @@ export default function Datagrid({
 
             {/* Table container */}
             <div className="overflow-x-auto" style={{ minHeight: minHeight, maxHeight: "700px" }}>
-                <table className="w-full text-left text-sm text-gray-700">
+                <table className="w-full text-left text-xs text-gray-700">
                     {/* Table header */}
                     <thead className="sticky top-0 bg-gray-200 text-gray-900 uppercase text-xs font-semibold">
                         {table.getHeaderGroups().map((headerGroup) => (

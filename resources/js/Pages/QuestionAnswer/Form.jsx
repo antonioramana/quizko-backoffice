@@ -173,6 +173,7 @@ export default function Form({
                         Annuler
                         </SecondaryButton>
                         <PrimaryButton
+                        className="ms-3"
                         type="submit"
                         disabled={processing}          
                         >

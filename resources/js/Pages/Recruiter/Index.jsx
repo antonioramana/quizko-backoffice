@@ -180,9 +180,9 @@ const useColumns = (
 
                     return (
                         <div className="flex items-center gap-2">
-                            <Avatar size="lg" src="" alt={name} />
+                            <Avatar size="md" src="" alt={name} />
                             <div className="space-y-2">
-                                <h2 className="text-[16px] font-semibold">
+                                <h2 className="text-md font-semibold">
                                     {name}
                                 </h2>
                                 <div className="flex items-center gap-4">
