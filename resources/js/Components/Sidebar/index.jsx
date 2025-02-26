@@ -47,7 +47,7 @@ const Sidebar = ({ sidebarOpen}) => {
       </div>
 
       {/* Menu */}
-      <nav className="px-4">
+      <nav className="px-4 py-2 border-t border-gray-100 shadow-sm">
         <h3 className="mb-4 text-sm font-semibold uppercase text-gray-500">Menu</h3>
         <ul className="space-y-2">
           {sidebarItems.map(({ href, icon: Icon, text }, index) => (
@@ -80,7 +80,7 @@ const SidebarItem = ({ href, icon: Icon, text }) => {
     <li>
       <Link
             href={route(href)}
-            className={`flex items-center gap-3 rounded-md px-4 py-2 text-gray-400 transition-all duration-200 hover:bg-purple-900 hover:text-white ${
+            className={`flex items-center gap-3 rounded-md px-4 py-2 text-gray-500 transition-all duration-200 hover:bg-purple-900 hover:text-white ${
              isActive ? 'bg-purple-950 text-white' : ''
           }`}
            >

@@ -130,7 +130,7 @@ export default function Current({ auth, interview }) {
                     </div>
                     <div className="p-5 h-250 shadow-sm border-t border rounded-lg bg-white">
                         <h3 className="text-lg text-black font-semibold mb-2 relative">
-                            Utilisateurs Connectés
+                            Etudiants Connectés
                             <span className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 inline-block text-xs bg-red-800 text-white rounded-full px-2 py-0.5">
                                 {filteredUsers.length}
                             </span>

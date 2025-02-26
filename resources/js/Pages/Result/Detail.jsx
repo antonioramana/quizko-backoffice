@@ -39,7 +39,7 @@ export default function Detail({ auth, questions, note, candidate }) {
         <AuthenticatedLayout user={auth.user}>
             <Head title="Résultat" />
             <Link
-                className="inline-flex items-center px-4 py-2 bg-purple-950 text-white border border-gray-300 rounded-md font-semibold text-xs uppercase tracking-widest shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
+                className="inline-flex items-center px-4 py-2 bg-purple-950 text-white border border-gray-300 rounded-md font-semibold text-xs uppercase tracking-widest shadow-sm hover:text-purple-950 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25 transition ease-in-out duration-150"
                 href={`/students-answers/${note.interview_id}`}
             >
                 Retour
@@ -92,9 +92,9 @@ export default function Detail({ auth, questions, note, candidate }) {
                     <button
                         onClick={handlePrevClick}
                         disabled={currentPage === 0}
-                        className={`p-2 bg-green-900 text-white rounded-md ${currentPage === 0 ? "cursor-not-allowed" : "hover:bg-gray-300"}`}
+                        className={`p-2 bg-green-900 text-white rounded-md ${currentPage === 0 ? "cursor-not-allowed" : "hover:bg-gray-300 hover:text-green-900"}`}
                     >
-                        <ChevronLeftIcon className="h-5 w-10" />
+                        <ChevronLeftIcon className="h-4 w-10" />
                     </button>
                     <span className="text-lg font-medium">
                         {currentPage + 1} question sur {totalPages}
@@ -102,9 +102,9 @@ export default function Detail({ auth, questions, note, candidate }) {
                     <button
                         onClick={handleNextClick}
                         disabled={currentPage >= Math.ceil(questions.length / QUESTIONS_PER_PAGE) - 1}
-                        className={`p-2 bg-green-900 text-white rounded-md ${currentPage >= Math.ceil(questions.length / QUESTIONS_PER_PAGE) - 1 ? "cursor-not-allowed" : "hover:bg-gray-300"}`}
+                        className={`p-2 bg-green-900 text-white rounded-md ${currentPage >= Math.ceil(questions.length / QUESTIONS_PER_PAGE) - 1 ? "cursor-not-allowed" : "hover:bg-gray-300 hover:text-green-900"}`}
                     >
-                        <ChevronRightIcon className="h-5 w-10" />
+                        <ChevronRightIcon className="h-4 w-10" />
                     </button>
                 </div>
                 <div className="mt-4 p-4 border rounded-md shadow-sm bg-white">

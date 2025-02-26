@@ -64,7 +64,7 @@ export default function Dashboard({ auth, count }) {
                     </div>
                     <div className="p-5 shadow-sm border-t border rounded-lg">
                         <h3 className="text-lg text-black font-semibold mb-3 relative">
-                            Utilisateurs Connectés
+                            Etudiants Connectés
                             <span className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 inline-block text-xs bg-red-800 text-white rounded-full px-2 py-0.5">
                                 {users.length > 0 && users.length}
                             </span>

@@ -231,7 +231,7 @@ const useColumns = (props) => {
                         href={route("student_answers.studentTestAnswers",[info.getValue().candidate.id,info.getValue().note.interview_id])}
                         className=" bg-orange-800 inline-flex items-center justify-center rounded-md py-2 px-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-2 xl:px-3"
                         >
-                           <EyeIcon className="w-5 h-5" />
+                           <EyeIcon className="w-3 h-3" />
                         </Link>
                     </div>
                 ),

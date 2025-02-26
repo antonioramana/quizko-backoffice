@@ -1,34 +1,53 @@
-FROM php:8.2-fpm-alpine
+From php:8.2-fpm-alpine
+RUN addgroup eni && adduser -S -G eni eni
 
-RUN addgroup -S dwc && adduser -S -G dwc dwc
-
-# Installer les extensions PHP nécessaires
-RUN apk add --no-cache \
-      libpq-dev freetype libjpeg-turbo libpng freetype-dev libjpeg-turbo-dev libpng-dev zip libzip-dev \
+RUN apk add libpq-dev \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pdo_pgsql pgsql zip \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd \
-    && docker-php-ext-install pcntl \
-    && docker-php-ext-enable gd \
-    && apk del --no-cache freetype-dev libjpeg-turbo-dev libpng-dev \
-    && rm -rf /var/cache/apk/* /tmp/*
+    && docker-php-ext-install pdo pdo_pgsql pgsql
 
-# Installer Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN docker-php-ext-configure pcntl --enable-pcntl \
+  && docker-php-ext-install \
+    pcntl
+  
+RUN apk update && \
+    apk add zip libzip-dev &&\
+    docker-php-ext-install zip
+
+RUN apk add --no-cache \
+      freetype \
+      libjpeg-turbo \
+      libpng \
+      freetype-dev \
+      libjpeg-turbo-dev \
+      libpng-dev \
+    && docker-php-ext-configure gd \
+      --with-freetype=/usr/include/ \
+      --with-jpeg=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd \
+    && docker-php-ext-enable gd \
+    && apk del --no-cache \
+      freetype-dev \
+      libjpeg-turbo-dev \
+      libpng-dev \
+    && rm -rf /tmp/*
+    
+USER eni
 
 WORKDIR /app
 
-COPY . .
 
-# Installer les dépendances PHP avec Composer
-RUN composer install --no-dev --optimize-autoloader
+COPY --from=composer /usr/bin/composer /usr/bin
 
-# Définir les permissions pour l'utilisateur dwc
-RUN chown -R dwc:dwc /app
+COPY --chown=eni:eni composer.json composer.lock .
 
-USER dwc
+RUN composer install --no-scripts --ignore-platform-reqs
 
-EXPOSE 9000
 
-CMD ["php-fpm"]
+EXPOSE 8000
+
+COPY --chown=eni:eni . /app
+
+RUN composer update --ignore-platform-req=ext-zip
+RUN composer dump-autoload
+
+CMD ["php","artisan","serve","--host","0.0.0.0","--port","8000"]
